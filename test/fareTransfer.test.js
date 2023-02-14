@@ -160,7 +160,7 @@ describe('Fare Transfer Basic Tests', () => {
             await fareTransfer.UpdatePrimaryTransit(transactionContext, 'customer1', 'MI');
             let ret = JSON.parse(await chaincodeStub.getState(customer.ID));
 
-            expect(ret).to.eql(Object.assign({docType: 'customer', LastTxnId: 'fare1',TransitId: 'MI'}, customer));
+            expect(ret).to.eql(Object.assign(customer,{ docType: 'customer', TransitId: 'MI'}));
         });
     });
 
